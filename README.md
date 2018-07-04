@@ -7,7 +7,6 @@ https://hub.docker.com/r/danny50610/sonar-scanner/
 # .gitlab-ci.yml Example
 ```
 sonarqube:
-  stage: sonarqube
   image: danny50610/sonar-scanner
   cache:
     key: $CI_COMMIT_REF_NAME
