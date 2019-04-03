@@ -8,8 +8,9 @@ https://hub.docker.com/r/danny50610/sonar-scanner/
 ```
 sonarqube:
   image: danny50610/sonar-scanner
+  allow_failure: true
   cache:
-    key: $CI_COMMIT_REF_NAME
+    key: "$CI_COMMIT_REF_NAME-$CI_JOB_NAME"
     paths:
       - .sonar
   script:
