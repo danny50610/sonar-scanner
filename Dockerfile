@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-
+# 支援 UTF-8 檔名
 ENV LANG C.UTF-8
 
 COPY sonar-scanner-4.3.0.2102-linux /sonar-scanner-4.3.0.2102-linux
