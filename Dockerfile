@@ -1,8 +1,12 @@
-FROM openjdk:alpine
+FROM ubuntu:18.04
 
-RUN apk add --no-cache wget && \
-    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873.zip && \
-    unzip sonar-scanner-cli-4.2.0.1873.zip && \
-    rm sonar-scanner-cli-4.2.0.1873.zip && \
-    cd /usr/bin && ln -s /sonar-scanner-4.2.0.1873/bin/sonar-scanner sonar-scanner && \
-    apk del wget
+ENV LANG C.UTF-8
+
+COPY sonar-scanner-4.3.0.2102-linux /sonar-scanner-4.3.0.2102-linux
+
+RUN ln -s /sonar-scanner-4.3.0.2102-linux/bin/sonar-scanner /usr/bin/sonar-scanner
+
+RUN apt update && apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt install -y nodejs
+
